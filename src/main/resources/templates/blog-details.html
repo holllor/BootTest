@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>blog</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -11,11 +11,13 @@
 <div class="container mt-5">
 
     <div th:each="el : ${post}" class="alert alert-info mt-2">
-        <h3  th:text="${el.title}"/>
+        <h3 th:text="${el.title}"/>
         <p th:text="${el.full_text}"/>
-        <p ><b>Просмотры</b> <span th:text="${el.views}"/></p>
-        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a>
-        <a th:href="'/blog/' + ${el.id} + '/remove'" class="btn btn-warning">Remove</a>
+        <p><b>Просмотры</b> <span th:text="${el.views}"/></p>
+        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br/><br/>
+        <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Remove</button>
+        </form>
     </div>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
